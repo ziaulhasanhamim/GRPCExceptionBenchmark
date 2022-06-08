@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GRPCExceptionBenchmark.Server.Protos";
+
+package weather_forecast;
+
+import "google/protobuf/timestamp.proto";
+
+service WeatherForecaster {
+  rpc GetWeather (WeatherRequest) returns (WeatherResponse);
+  rpc GetWeatherBetter (WeatherRequest) returns (WeatherResponse);
+}
+
+message WeatherRequest {
+  string city_name = 1;
+}
+
+message WeatherResponse {
+  google.protobuf.Timestamp DateTime = 1;
+  int32 Temperature = 2;
+  string Summary = 3;
+}
